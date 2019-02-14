@@ -31,7 +31,7 @@ public class JdkDynamicInvoker implements InvocationHandler {
         Class<?>[] argsType=null;
         if(args!=null){
             argsType=new Class[args.length];
-            for(int i=0;i<args.length-1;i++){
+            for(int i=0;i<args.length;i++){
                 Class<?> argClass = args[i].getClass();
                 argsType[i]=argClass;
             }

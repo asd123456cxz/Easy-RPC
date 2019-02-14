@@ -7,6 +7,8 @@ public interface DemoApi {
 
     void hello();
 
+    String hello1(String msg);
+
     @NonRemote
     void notexecute();
 

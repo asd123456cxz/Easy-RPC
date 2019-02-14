@@ -12,6 +12,11 @@ public class DemoApiImpl implements DemoApi {
     }
 
     @Override
+    public String hello1(String msg) {
+        return "server:"+msg;
+    }
+
+    @Override
     public void notexecute() {
         System.out.println("not do");
     }

@@ -14,7 +14,7 @@ public class DemoClient {
         config.setServiceName("demoApiImpl");
 
         DemoApi api = config.call();
-        api.hello();
+        api.hello1("rpc");
     }
 
 }

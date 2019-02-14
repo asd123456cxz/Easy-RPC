@@ -1,19 +1,33 @@
 package invoker;
 
+import connector.Connection;
+import export.URL;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class AbstractInvoker<T> {
+public class ServiceInvoker<T> implements Invoker{
+
+    private URL url;
 
     private T instance;
 
-    AbstractInvoker(T instance){
+    public ServiceInvoker(T instance ,URL url){
         this.instance=instance;
+        this.url = url ;
     }
 
-    public void invoke(Invokation invokation) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        Method method = instance.getClass().getMethod(invokation.getMethodName(),invokation.getArgTypes());
-        method.invoke(instance,invokation.getArgs());
+    @Override
+    public Object invoke(Invocation invocation) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Method method = instance.getClass().getMethod(invocation.getMethodName(), invocation.getArgTypes());
+        return method.invoke(instance, invocation.getArgs());
     }
 
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setUrl(URL url) {
+        this.url = url;
+    }
 }

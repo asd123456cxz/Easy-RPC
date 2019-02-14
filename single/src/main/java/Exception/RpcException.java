@@ -1,4 +1,8 @@
 package Exception;
 
-public class RpcException {
+public class RpcException extends RuntimeException {
+
+    public RpcException(String message) {
+        super(message);
+    }
 }

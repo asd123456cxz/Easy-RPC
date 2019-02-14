@@ -1,14 +1,35 @@
 package export;
 
+import registry.LocalRegistry;
+
 import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
-public class Exporter {
+public class LocalExporter {
 
-    private ConcurrentHashMap<Class,HashSet<String>> relation = new ConcurrentHashMap<>();
+    private Class clazz;
 
-    public Exporter(Class clazz ,HashSet<String> methods){
-        relation.put(clazz,methods);
+    private Set<String> methods;
+
+    public static LocalRegistry registry = new LocalRegistry();
+
+    public LocalExporter(Class clazz , HashSet<String> methods,int port){
+        this.clazz=clazz;
+        this.methods=methods;
+        export(port);
+    }
+
+    public void export(int port) {
+        /*Class[] interfaces = clazz.getInterfaces();
+        URL url = new URL(URL.MY_PROTOCAL,"",port,interfaces[0]);
+        try {
+            Object o = clazz.newInstance();
+            registry.regist(url,o);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }*/
     }
 
 }

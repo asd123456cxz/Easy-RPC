@@ -1,20 +1,41 @@
 package connector;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-public class Protocal<T> {
+public class Transporter<T,R> implements Serializable {
+
+    private String serviceName;
 
     private Class<T> classname;
 
-    private Method method;
+    private String methodName;
 
     private Object[] args;
 
-    public Protocal(Class<T> classname, Method method, Object[] args) {
+    private Class<?>[] argsType;
+
+    private Class<R> returnClass;
+
+    private R returnValue;
+
+    public Transporter(String serviceName,Class<T> classname, String methodName, Object[] args , Class<?>[] argsType) {
+        this.serviceName=serviceName;
         this.classname = classname;
-        this.method = method;
+        this.methodName=methodName;
         this.args = args;
+        this.argsType=argsType;
+    }
+
+    public Transporter() {}
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public Class getClassname() {
@@ -25,14 +46,6 @@ public class Protocal<T> {
         this.classname = classname;
     }
 
-    public Method getMethod() {
-        return method;
-    }
-
-    public void setMethod(Method method) {
-        this.method = method;
-    }
-
     public Object[] getArgs() {
         return args;
     }
@@ -41,12 +54,39 @@ public class Protocal<T> {
         this.args = args;
     }
 
-    @Override
-    public String toString() {
-        return "Protocal{" +
-                "classname=" + classname +
-                ", method=" + method +
-                ", args=" + Arrays.toString(args) +
-                '}';
+    public Class<R> getReturnClass() {
+        return returnClass;
+    }
+
+    public void setReturnClass(Class<R> returnClass) {
+        this.returnClass = returnClass;
+    }
+
+    public R getReturnValue() {
+        return returnValue;
+    }
+
+    public void setReturnValue(R returnValue) {
+        this.returnValue = returnValue;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public R get(){
+        return returnValue;
+    }
+
+    public Class<?>[] getArgsType() {
+        return argsType;
+    }
+
+    public void setArgsType(Class<?>[] argsType) {
+        this.argsType = argsType;
     }
 }

@@ -5,6 +5,6 @@ import java.lang.annotation.*;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Service {
+@Target(ElementType.METHOD)
+public @interface NonRemote {
 }

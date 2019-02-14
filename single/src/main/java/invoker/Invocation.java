@@ -2,17 +2,25 @@ package invoker;
 
 import java.lang.reflect.Method;
 
-public class Invokation {
+public class Invocation {
 
     private String serviceName;
 
-    private String className;
+    private Class clazz;
 
     private String methodName;
 
     private Object[] args;
 
     private Class<?>[] argTypes;
+
+    public Invocation(String serviceName, Class clazz, String methodName, Object[] args, Class<?>[] argTypes) {
+        this.serviceName = serviceName;
+        this.clazz = clazz;
+        this.methodName = methodName;
+        this.args = args;
+        this.argTypes = argTypes;
+    }
 
     public String getServiceName() {
         return serviceName;
@@ -22,12 +30,12 @@ public class Invokation {
         this.serviceName = serviceName;
     }
 
-    public String getClassName() {
-        return className;
+    public Class getClazz() {
+        return clazz;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
     }
 
     public String getMethodName() {
